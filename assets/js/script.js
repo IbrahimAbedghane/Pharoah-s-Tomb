@@ -72,3 +72,17 @@ function computerPlay() {
     const choices = choicesConfig[gameState.gameMode];
     return choices[Math.floor(Math.random() * choices.length)];
 };
+
+function determineWinner(player, computer) {
+    if (player===computer) {
+        return 'draw';
+    }
+    const wins = {
+        rock: ['scissors', 'lizard'],
+        paper: ['rock', 'spock'],
+        scissors: ['paper', 'lizard'],
+        lizard: ['spock', 'paper'],
+        spock: ['scissors', 'rock']
+    };
+    return wins[player].includes(computer) ? 'player' : 'computer''
+};
