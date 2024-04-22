@@ -172,3 +172,11 @@ footer {
         font-size: 20px; /* For smaller close button on smaller screens */
     }
 }
+
+/* Enhanced contrast for the titles */
+.selection-title {
+    color: #d4af37; /* Gold for high contrast with dark background */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.75); /* Shadowing for enhanced contrast */
+}
+
