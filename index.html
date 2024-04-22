@@ -31,7 +31,13 @@
                 <li><button onclick="setupGame('classic')">Classic</button></li>
                 <li><button onclick="setupGame('spock')">Spock Game</button></li>
             </ul>
-
+        </section>
+        <section id="usernameScreen" class="hidden">
+            <!--Section added to enter username for user to play as-->
+            <h2 class="section-title">Enter Your Commander Alias</h2>
+            <input type="text" id="usernameInput" placeholder="Username">
+            <button onclick="enterUsername()">Submit</button>
+            <button onclick="returnToGameSelection()">Back</button>
         </section>
     </main>
  
