@@ -86,3 +86,20 @@ function determineWinner(player, computer) {
     };
     return wins[player].includes(computer) ? 'player' : 'computer''
 };
+
+function updateScore(result) {
+    if (result === 'player') {
+        gameState.playerScore++;
+        if (gameState.playerScore === 5) {
+            endGame("Player");
+        }
+    } else if (result === 'computer') {
+        gameState.computerScore++;
+        if (gameState.computerScore === 5) {
+            endGame("Computer");
+        }
+    } else {
+        gameState.draws++;
+    }
+    updateScoreDisplay();
+};
