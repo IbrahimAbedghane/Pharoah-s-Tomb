@@ -107,3 +107,10 @@ function updateScore(result) {
 function updateScoreDisplay() {
     document.getElementById('score').textContent = 'Player: ${gameState.playerScore}, Computer: ${gameState.computerScore}, Draws: ${gameState.draws}';
 };
+
+function displayResults(player, computer, result) {
+    const message = 'You chose ${player}, Computer chose ${computer}.' +
+    (result === 'draw' ? "It's a draw!" :
+     result === 'player' ? "You win!" : "Computer wins!");
+     document.getElementById('result').textContent = message;
+};
