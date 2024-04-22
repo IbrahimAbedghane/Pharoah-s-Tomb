@@ -49,6 +49,20 @@
             <button onclick="resetGame()">Reset Game</button>
             <button onclick="returnToHome()">Return to Home</button>
         </section>
+        <!--Created button that will be styled with CSS and has list of the game rules-->
+        <button id="showRulesBtn">Show Game Rules</button>
+        <aside id="rulesModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h1>Game Rules</h1>
+                <h2>Your Mission</h2>
+                <p>You have landed in the Egypt and you need to retrieve the treasure hidden in the pyramids. However, the Egyptians have an ancient technology you must beat first before completing your mission!</p>
+                <h3>Original Game</h3>
+                <p>Rock crushes Scissors<br>Scissors cuts Paper<br>Paper covers Rock</p>
+                <h3>Spock Game</h3>
+                <p>Rock crushes Lizard<br>Lizard poisons Spock<br>Spock Smashes Scissors<br>Scissors decapitates Lizard<br>Lizard eats Paper<br>Paper disproves Spock<br>Spock vapoirizes Rock</p>
+            </div>
+        </aside>
     </main>
  
     
