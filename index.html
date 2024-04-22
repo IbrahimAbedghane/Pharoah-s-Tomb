@@ -17,11 +17,23 @@
             <p>JavaScript is required to run "Pharoah's Tomb" game. Please enable JavaScript in your browser settings to play.</p>
         </div>
     </noscript>
+    <!--Background image added to the site and will be styled with CSS-->
     <img src="assets/images/egyptian-tomb.png" alt="background-image">
     <header>
         <h1 class="main-title">Pharoah's Tomb</h1>
         <h2 class="subtitle">Journey through history, complete your mission...survive!</h2>
     </header>
+    <main>
+        <section id="selectionScreen">
+            <!--Created buttons for the game so users can select between two modes-->
+            <h2 class="selection-title">Choose Your Mission</h2>
+            <ul>
+                <li><button onclick="setupGame('classic')">Classic</button></li>
+                <li><button onclick="setupGame('spock')">Spock Game</button></li>
+            </ul>
+
+        </section>
+    </main>
  
     
     <script src="assets/js/script.js"></script>
