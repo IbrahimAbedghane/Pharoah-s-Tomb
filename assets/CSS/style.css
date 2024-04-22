@@ -50,3 +50,19 @@ header {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     font-weight: bold; /* For better visual effect added boldness */
 }
+
+.subtitle {
+    font-size: 1.5em;
+}
+
+main {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 50px; /* Added padding to ensure no overlap with footer */
+    overflow-y: auto; /* Added scroll in case content exceeds viewport */
+    flex: 1 0 auto; /* Allows content to grow/shrink if needed */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
