@@ -49,3 +49,14 @@ window.resetGame = function() {
     document.getElementById('gameEndModal').style.display= 'none';
     populateChoices(gameState.gameMode);
 };
+
+function populateChoices(mode) {
+    const choicesContainer = document.getElementById('choices');
+    choicesContainer.innerHTML='';
+    choicesConfig[mode].forEach(choice=> {
+        const button = document.createElement('button');
+        button.textContent = choice.charAt(0).toUpperCase() + choice.slice(1);
+        button.addEventListener('click', function() { playRound(choice); });
+        choicesContainer.appendChild(button);
+    });
+};
