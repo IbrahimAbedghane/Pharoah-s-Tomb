@@ -67,3 +67,8 @@ function playRound(playerSelection) {
     updateScore(result);
     displayResults(playerSelection, computerSelection, result);
 };
+
+function computerPlay() {
+    const choices = choicesConfig[gameState.gameMode];
+    return choices[Math.floor(Math.random() * choices.length)];
+};
