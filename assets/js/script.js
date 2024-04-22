@@ -37,3 +37,15 @@ window.returnToHome = function() {
     document.getElementById('gamePlayArea').classList.add('hidden');
     document.getElementById('selectionScreen').classList.remove('hidden');
 };
+
+window.resetGame = function() {
+    gameState.playerScore = 0;
+    gameState.computerScore = 0;
+    gameState.draws = 0;
+    updateScoreDisplay();
+    const button = document.querySelectorAll('#choices button');
+    button.forEach(button => button.disabled = false);
+    document.getElementById('result').textContent ='';
+    document.getElementById('gameEndModal').style.display= 'none';
+    populateChoices(gameState.gameMode);
+};
