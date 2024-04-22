@@ -126,3 +126,11 @@ function endGame(winnder) {
 function updateGreeting() {
     document.getElementById('greeting').textContent = 'Hello, ${gameState.username}! Choose your move';
 };
+
+window.closeModal = function () {
+    document.getElementById('rulesModal').style.display = 'none';
+};
+
+window.closeModal = function () {
+    document.getElementById('gameEndModal').style.display ='none';
+};
