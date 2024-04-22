@@ -60,3 +60,10 @@ function populateChoices(mode) {
         choicesContainer.appendChild(button);
     });
 };
+
+function playRound(playerSelection) {
+    const computerSelection = computerPlay();
+    const result = determineWinner(playerSelection, computerSelection);
+    updateScore(result);
+    displayResults(playerSelection, computerSelection, result);
+};
