@@ -44,3 +44,9 @@ header {
     width: 100%;
     box-sizing: border-box;
 }
+
+.main-title, .subtitle {
+    color: #d4af37; /* Gold to create contrast with dark background image */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    font-weight: bold; /* For better visual effect added boldness */
+}
