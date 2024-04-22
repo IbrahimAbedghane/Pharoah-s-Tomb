@@ -32,3 +32,8 @@ window.returnToGameSelection = function() {
     document.getElementById('usernameScreen').classList.add('hidden');
     document.getElementById('selectionScreen').classList.remove('hidden');
 };
+
+window.returnToHome = function() {
+    document.getElementById('gamePlayArea').classList.add('hidden');
+    document.getElementById('selectionScreen').classList.remove('hidden');
+};
