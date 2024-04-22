@@ -114,3 +114,11 @@ function displayResults(player, computer, result) {
      result === 'player' ? "You win!" : "Computer wins!");
      document.getElementById('result').textContent = message;
 };
+
+function endGame(winnder) {
+    const gameEndMessage = document.getElementById('gameEndMessage');
+    gameEndMessage.textContent = '${winner} wins the match! Congratulations!';
+    document.getElementById('gameEndModal').style.display = 'block';
+    const buttons = document.querySelectorAll('#choices button');
+    buttons.forEach(button => button.disabled = true);
+};
