@@ -122,3 +122,7 @@ function endGame(winnder) {
     const buttons = document.querySelectorAll('#choices button');
     buttons.forEach(button => button.disabled = true);
 };
+
+function updateGreeting() {
+    document.getElementById('greeting').textContent = 'Hello, ${gameState.username}! Choose your move';
+};
