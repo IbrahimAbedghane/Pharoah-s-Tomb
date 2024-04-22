@@ -103,3 +103,7 @@ function updateScore(result) {
     }
     updateScoreDisplay();
 };
+
+function updateScoreDisplay() {
+    document.getElementById('score').textContent = 'Player: ${gameState.playerScore}, Computer: ${gameState.computerScore}, Draws: ${gameState.draws}';
+};
