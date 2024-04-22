@@ -7,3 +7,8 @@ document.addEventListener('DOMContentLoaded',function() {
         username: 'Player'
     }; 
 });
+
+const choicesConfig = {
+    classic: ['rock', 'paper', 'scissors'],
+    spock: ['rock', 'paper', 'scissors', 'lizard', 'spock']
+};
