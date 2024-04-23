@@ -1,5 +1,6 @@
+// Event listener to ensure DOM is loaded before initialising game.
 document.addEventListener('DOMContentLoaded', function() {
-    const gameState = {
+    let gameState = {
         playerScore: 0,
         computerScore: 0,
         draws: 0,
@@ -7,19 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
         username: 'Player'
     }; 
 
-    const choicesConfig = {
+    // Sets the game choices available in each mode.
+    let choicesConfig = {
         classic: ['rock', 'paper', 'scissors'],
         spock: ['rock', 'paper', 'scissors', 'lizard', 'spock']
     };
 
+    // Sets the game up based on the mode the user selects 
     window.setupGame = function(mode) {
         gameState.gameMode = mode;
         document.getElementById('selectionScreen').classList.add('hidden');
         document.getElementById('usernameScreen').classList.remove('hidden');
     };
 
+    // Allows for username submission and hides the username screen
     window.enterUsername = function() {
-        const usernameInput = document.getElementById('usernameInput');
+        let usernameInput = document.getElementById('usernameInput');
         gameState.username = usernameInput.value.trim() || "Player";
         document.getElementById('usernameScreen').classList.add('hidden');
         document.getElementById('gamePlayArea').classList.remove('hidden');
@@ -27,56 +31,63 @@ document.addEventListener('DOMContentLoaded', function() {
         populateChoices(gameState.gameMode);
     };
 
+    // Function to allow the user to return to the game mode selection screen.
     window.returnToGameSelection = function() {
         document.getElementById('usernameScreen').classList.add('hidden');
         document.getElementById('selectionScreen').classList.remove('hidden');
     };
 
+    // Function to allow the user to navigate back to the main home screen.
     window.returnToHome = function() {
         document.getElementById('gamePlayArea').classList.add('hidden');
         document.getElementById('selectionScreen').classList.remove('hidden');
     };
 
+    // Function to allow user to reset the game scores.
     window.resetGame = function() {
         gameState.playerScore = 0;
         gameState.computerScore = 0;
         gameState.draws = 0;
         updateScoreDisplay();
-        const buttons = document.querySelectorAll('#choices button');
+        let buttons = document.querySelectorAll('#choices button');
         buttons.forEach(button => button.disabled = false);
         document.getElementById('result').textContent = '';
         document.getElementById('gameEndModal').style.display = 'none';
         populateChoices(gameState.gameMode);
     };
 
+    // Created the choice buttons.
     function populateChoices(mode) {
-        const choicesContainer = document.getElementById('choices');
+        let choicesContainer = document.getElementById('choices');
         choicesContainer.innerHTML = '';
         choicesConfig[mode].forEach(choice => {
-            const button = document.createElement('button');
+            let button = document.createElement('button');
             button.textContent = choice.charAt(0).toUpperCase() + choice.slice(1);
             button.addEventListener('click', function() { playRound(choice); });
             choicesContainer.appendChild(button);
         });
     };
 
+    // Simulates a game round and calculates result
     function playRound(playerSelection) {
-        const computerSelection = computerPlay();
-        const result = determineWinner(playerSelection, computerSelection);
+        let computerSelection = computerPlay();
+        let result = determineWinner(playerSelection, computerSelection);
         updateScore(result);
         displayResults(playerSelection, computerSelection, result);
     };
 
+    // Selects a random choice for the computer.
     function computerPlay() {
-        const choices = choicesConfig[gameState.gameMode];
+        let choices = choicesConfig[gameState.gameMode];
         return choices[Math.floor(Math.random() * choices.length)];
     };
 
+    // Determines the winner of the round using the game rules.
     function determineWinner(player, computer) {
         if (player === computer) {
             return 'draw';
         }
-        const wins = {
+        let wins = {
             rock: ['scissors', 'lizard'],
             paper: ['rock', 'spock'],
             scissors: ['paper', 'lizard'],
@@ -86,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return wins[player].includes(computer) ? 'player' : 'computer';
     };
 
+    // Updates the results of the game and checks if winning conditions have been met.
     function updateScore(result) {
         if (result === 'player') {
             gameState.playerScore++;
@@ -103,29 +115,35 @@ document.addEventListener('DOMContentLoaded', function() {
         updateScoreDisplay();
     };
 
+
+    // Updates the user interface to the current scores.
     function updateScoreDisplay() {
         document.getElementById('score').textContent = `Player: ${gameState.playerScore}, Computer: ${gameState.computerScore}, Draws: ${gameState.draws}`;
     };
 
+    // Displays the winner.
     function displayResults(player, computer, result) {
-        const message = `You chose ${player}, Computer chose ${computer}. ` +
+        let message = `You chose ${player}, Computer chose ${computer}. ` +
                         (result === 'draw' ? "It's a draw!" :
                          result === 'player' ? "You win!" : "Computer wins!");
         document.getElementById('result').textContent = message;
     };
 
+    // Displays the final winner and disables any more input.
     function endGame(winner) {
-        const gameEndMessage = document.getElementById('gameEndMessage');
+        let gameEndMessage = document.getElementById('gameEndMessage');
         gameEndMessage.textContent = `${winner} wins the match! Congratulations!`;
         document.getElementById('gameEndModal').style.display = 'block';
-        const buttons = document.querySelectorAll('#choices button');
+        let buttons = document.querySelectorAll('#choices button');
         buttons.forEach(button => button.disabled = true);
     };
 
+    // Greeting message updates based on the users input.
     function updateGreeting() {
         document.getElementById('greeting').textContent = `Hello, ${gameState.username}! Choose your move:`;
     };
 
+    // Close the modal when the x button is clicked
     window.closeModal = function() {
         document.getElementById('rulesModal').style.display = 'none';
     };
@@ -134,15 +152,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('gameEndModal').style.display = 'none';
     };
 
-    const rulesModal = document.getElementById('rulesModal');
-    const showRulesBtn = document.getElementById('showRulesBtn');
-    const closeModalButton = document.querySelector('.modal .close');
+    
+    let rulesModal = document.getElementById('rulesModal');
+    let showRulesBtn = document.getElementById('showRulesBtn');
+    let closeModalButton = document.querySelector('.modal .close');
 
     showRulesBtn.addEventListener('click', function() {
         rulesModal.style.display = 'block'; // Open the modal
     });
 
     closeModalButton.addEventListener('click', function() {
-        window.closeModal(); // Close the modal
+        closeModal(); // Close the modal
     });
 });
