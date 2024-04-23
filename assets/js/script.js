@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',function() {
+document.addEventListener('DOMContentLoaded', function() {
     const gameState = {
         playerScore: 0,
         computerScore: 0,
@@ -6,131 +6,143 @@ document.addEventListener('DOMContentLoaded',function() {
         gameMode: null,
         username: 'Player'
     }; 
-});
 
-const choicesConfig = {
-    classic: ['rock', 'paper', 'scissors'],
-    spock: ['rock', 'paper', 'scissors', 'lizard', 'spock']
-};
-
-window.setupGame = function() {
-    gameState.gameMode = mode;
-    document.getElementById('selectionScreen').classList.add('hidden');
-    document.getElementById('usernameScreen').classList.remove('hidden');
-};
-
-window.enterUsername = function() {
-    const usernameInput = document.getElementById('usernameInput');
-    gameState.username = usernameInput.value.trim() || "Player";
-    document.getElementById('usernameScreen').classList.add('hidden');
-    document.getElementById('gamePlayArea').classList.remove('hidden');
-    updateGreeting();
-    populateChoices(gameState.gameMode);
-};
-
-window.returnToGameSelection = function() {
-    document.getElementById('usernameScreen').classList.add('hidden');
-    document.getElementById('selectionScreen').classList.remove('hidden');
-};
-
-window.returnToHome = function() {
-    document.getElementById('gamePlayArea').classList.add('hidden');
-    document.getElementById('selectionScreen').classList.remove('hidden');
-};
-
-window.resetGame = function() {
-    gameState.playerScore = 0;
-    gameState.computerScore = 0;
-    gameState.draws = 0;
-    updateScoreDisplay();
-    const button = document.querySelectorAll('#choices button');
-    button.forEach(button => button.disabled = false);
-    document.getElementById('result').textContent ='';
-    document.getElementById('gameEndModal').style.display= 'none';
-    populateChoices(gameState.gameMode);
-};
-
-function populateChoices(mode) {
-    const choicesContainer = document.getElementById('choices');
-    choicesContainer.innerHTML='';
-    choicesConfig[mode].forEach(choice=> {
-        const button = document.createElement('button');
-        button.textContent = choice.charAt(0).toUpperCase() + choice.slice(1);
-        button.addEventListener('click', function() { playRound(choice); });
-        choicesContainer.appendChild(button);
-    });
-};
-
-function playRound(playerSelection) {
-    const computerSelection = computerPlay();
-    const result = determineWinner(playerSelection, computerSelection);
-    updateScore(result);
-    displayResults(playerSelection, computerSelection, result);
-};
-
-function computerPlay() {
-    const choices = choicesConfig[gameState.gameMode];
-    return choices[Math.floor(Math.random() * choices.length)];
-};
-
-function determineWinner(player, computer) {
-    if (player===computer) {
-        return 'draw';
-    }
-    const wins = {
-        rock: ['scissors', 'lizard'],
-        paper: ['rock', 'spock'],
-        scissors: ['paper', 'lizard'],
-        lizard: ['spock', 'paper'],
-        spock: ['scissors', 'rock']
+    const choicesConfig = {
+        classic: ['rock', 'paper', 'scissors'],
+        spock: ['rock', 'paper', 'scissors', 'lizard', 'spock']
     };
-    return wins[player].includes(computer) ? 'player' : 'computer''
-};
 
-function updateScore(result) {
-    if (result === 'player') {
-        gameState.playerScore++;
-        if (gameState.playerScore === 5) {
-            endGame("Player");
+    window.setupGame = function(mode) {
+        gameState.gameMode = mode;
+        document.getElementById('selectionScreen').classList.add('hidden');
+        document.getElementById('usernameScreen').classList.remove('hidden');
+    };
+
+    window.enterUsername = function() {
+        const usernameInput = document.getElementById('usernameInput');
+        gameState.username = usernameInput.value.trim() || "Player";
+        document.getElementById('usernameScreen').classList.add('hidden');
+        document.getElementById('gamePlayArea').classList.remove('hidden');
+        updateGreeting();
+        populateChoices(gameState.gameMode);
+    };
+
+    window.returnToGameSelection = function() {
+        document.getElementById('usernameScreen').classList.add('hidden');
+        document.getElementById('selectionScreen').classList.remove('hidden');
+    };
+
+    window.returnToHome = function() {
+        document.getElementById('gamePlayArea').classList.add('hidden');
+        document.getElementById('selectionScreen').classList.remove('hidden');
+    };
+
+    window.resetGame = function() {
+        gameState.playerScore = 0;
+        gameState.computerScore = 0;
+        gameState.draws = 0;
+        updateScoreDisplay();
+        const buttons = document.querySelectorAll('#choices button');
+        buttons.forEach(button => button.disabled = false);
+        document.getElementById('result').textContent = '';
+        document.getElementById('gameEndModal').style.display = 'none';
+        populateChoices(gameState.gameMode);
+    };
+
+    function populateChoices(mode) {
+        const choicesContainer = document.getElementById('choices');
+        choicesContainer.innerHTML = '';
+        choicesConfig[mode].forEach(choice => {
+            const button = document.createElement('button');
+            button.textContent = choice.charAt(0).toUpperCase() + choice.slice(1);
+            button.addEventListener('click', function() { playRound(choice); });
+            choicesContainer.appendChild(button);
+        });
+    };
+
+    function playRound(playerSelection) {
+        const computerSelection = computerPlay();
+        const result = determineWinner(playerSelection, computerSelection);
+        updateScore(result);
+        displayResults(playerSelection, computerSelection, result);
+    };
+
+    function computerPlay() {
+        const choices = choicesConfig[gameState.gameMode];
+        return choices[Math.floor(Math.random() * choices.length)];
+    };
+
+    function determineWinner(player, computer) {
+        if (player === computer) {
+            return 'draw';
         }
-    } else if (result === 'computer') {
-        gameState.computerScore++;
-        if (gameState.computerScore === 5) {
-            endGame("Computer");
+        const wins = {
+            rock: ['scissors', 'lizard'],
+            paper: ['rock', 'spock'],
+            scissors: ['paper', 'lizard'],
+            lizard: ['spock', 'paper'],
+            spock: ['scissors', 'rock']
+        };
+        return wins[player].includes(computer) ? 'player' : 'computer';
+    };
+
+    function updateScore(result) {
+        if (result === 'player') {
+            gameState.playerScore++;
+            if (gameState.playerScore === 5) {
+                endGame("Player");
+            }
+        } else if (result === 'computer') {
+            gameState.computerScore++;
+            if (gameState.computerScore === 5) {
+                endGame("Computer");
+            }
+        } else {
+            gameState.draws++;
         }
-    } else {
-        gameState.draws++;
-    }
-    updateScoreDisplay();
-};
+        updateScoreDisplay();
+    };
 
-function updateScoreDisplay() {
-    document.getElementById('score').textContent = 'Player: ${gameState.playerScore}, Computer: ${gameState.computerScore}, Draws: ${gameState.draws}';
-};
+    function updateScoreDisplay() {
+        document.getElementById('score').textContent = `Player: ${gameState.playerScore}, Computer: ${gameState.computerScore}, Draws: ${gameState.draws}`;
+    };
 
-function displayResults(player, computer, result) {
-    const message = 'You chose ${player}, Computer chose ${computer}.' +
-    (result === 'draw' ? "It's a draw!" :
-     result === 'player' ? "You win!" : "Computer wins!");
-     document.getElementById('result').textContent = message;
-};
+    function displayResults(player, computer, result) {
+        const message = `You chose ${player}, Computer chose ${computer}. ` +
+                        (result === 'draw' ? "It's a draw!" :
+                         result === 'player' ? "You win!" : "Computer wins!");
+        document.getElementById('result').textContent = message;
+    };
 
-function endGame(winnder) {
-    const gameEndMessage = document.getElementById('gameEndMessage');
-    gameEndMessage.textContent = '${winner} wins the match! Congratulations!';
-    document.getElementById('gameEndModal').style.display = 'block';
-    const buttons = document.querySelectorAll('#choices button');
-    buttons.forEach(button => button.disabled = true);
-};
+    function endGame(winner) {
+        const gameEndMessage = document.getElementById('gameEndMessage');
+        gameEndMessage.textContent = `${winner} wins the match! Congratulations!`;
+        document.getElementById('gameEndModal').style.display = 'block';
+        const buttons = document.querySelectorAll('#choices button');
+        buttons.forEach(button => button.disabled = true);
+    };
 
-function updateGreeting() {
-    document.getElementById('greeting').textContent = 'Hello, ${gameState.username}! Choose your move';
-};
+    function updateGreeting() {
+        document.getElementById('greeting').textContent = `Hello, ${gameState.username}! Choose your move:`;
+    };
 
-window.closeModal = function () {
-    document.getElementById('rulesModal').style.display = 'none';
-};
+    window.closeModal = function() {
+        document.getElementById('rulesModal').style.display = 'none';
+    };
 
-window.closeModal = function () {
-    document.getElementById('gameEndModal').style.display ='none';
-};
+    window.closeGameEndModal = function() {
+        document.getElementById('gameEndModal').style.display = 'none';
+    };
+
+    const rulesModal = document.getElementById('rulesModal');
+    const showRulesBtn = document.getElementById('showRulesBtn');
+    const closeModalButton = document.querySelector('.modal .close');
+
+    showRulesBtn.addEventListener('click', function() {
+        rulesModal.style.display = 'block'; // Open the modal
+    });
+
+    closeModalButton.addEventListener('click', function() {
+        window.closeModal(); // Close the modal
+    });
+});

@@ -100,14 +100,15 @@ button:hover {
 
 .modal {
     position: fixed;
-    top: 30%;   
+    top: 50%;   
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
     width: 60%;
-    max-width: 500px;
-    max-height: 550px;
+    max-width: 300px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto; /* allows scrolling inside the modal if too much content */
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     z-index: 1000;
@@ -117,7 +118,11 @@ button:hover {
 
 .modal-content {
     position: relative;
+    padding: 10px;
+    overflow: hidden;
 }
+
+
 
 .close {
     position: absolute;
@@ -154,8 +159,9 @@ footer {
     }
 
     .modal {
-        width: 95%;
-        padding: 15px;
+        width: 90%;
+        max-height: 70vh;        
+        padding: 10px;
     }
 
     button {
@@ -170,6 +176,11 @@ footer {
 
     .close {
         font-size: 20px; /* For smaller close button on smaller screens */
+    }
+
+    .modal {
+        width: 95%;
+        padding: 5px;
     }
 }
 
