@@ -37,7 +37,7 @@
             <button onclick="enterUsername()">Submit</button>
             <button onclick="returnToGameSelection()">Back</button>
         </section>
-        <section id="gamePlayArea" class="hidden">
+        <div id="gamePlayArea" class="hidden">
             <div id="greeting"></div>
             <div id="choices">
                 <!--Choices will be added here dynamically using JavaScript-->
@@ -46,13 +46,13 @@
             <p id="result"></p>
             <button onclick="resetGame()">Reset Game</button>
             <button onclick="returnToHome()">Return to Home</button>
-        </section>
+        </div>
         <!--Created button that will be styled with CSS and has list of the game rules-->
         <button id="showRulesBtn">Show Game Rules</button>
         <aside id="rulesModal" class="modal hidden">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <h1>Game Rules</h1>
+                <h2>Game Rules</h2>
                 <h2>Your Mission</h2>
                 <p>You have landed in the Egypt and you need to retrieve the treasure hidden in the pyramids. However, the Egyptians have an ancient technology you must beat first before completing your mission!</p>
                 <h3>Original Game</h3>
