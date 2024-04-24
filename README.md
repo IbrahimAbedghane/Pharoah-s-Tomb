@@ -53,3 +53,14 @@ This project is deployed to Github Pages. The steps taken to deploy the project 
 3. Once saved the master branch will be automatically updated.
 
 The live link to the site can be found here - [Pharoah's Tomb Live Site](https://ibrahimabedghane.github.io/Pharoah-s-Tomb/)
+
+## Credits
+
+### Content
+- The text for the game and the descriptions were created and designed specifically by myself for this game.
+
+### Media
+- The background image was taken from the [ArtStation webiste](https://www.artstation.com/artwork/ykV18x)
+
+### Acknowledgments 
+ - I would like to thank my mentor for providing me with the right mental model to approach this game.
