@@ -37,8 +37,19 @@ The site has several featurs intended to be intiuitve to the user as they are gr
 - In order to carry out testing I have ensured that all the links works and the correct file paths are connected accordingly.
 - I have ensured that each button and feature on the site works as intended and is intuitive. To aid in this testing I have deployed the game on various sized screens and devices in order to test functionality across the board.
 
-- HTML: No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/#textarea)
-- CSS: No errors were returned when passing through the official [(Jigsaw) Validator](https://jigsaw.w3.org/css-validator/validator)
+- HTML: No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fibrahimabedghane.github.io%2FPharoah-s-Tomb%2F)
+- CSS: No errors were returned when passing through the official [(Jigsaw) Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fibrahimabedghane.github.io%2FPharoah-s-Tomb%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 - JavaScript: No errors were found when reviewed by [JSHint](https://jshint.com/)
 
 ### Unfixed bugs
+- Although no bugs are found in the game there are short comings with the design and execution of the game and its features. The user experience would be significantly more enhanced with an increasing array of graphics/images and dynamic features to interact with on the site.
+- More improvements could be made to the game play and to allow the option for the user to increase the difficulty level of the game
+
+## Deployment
+
+This project is deployed to Github Pages. The steps taken to deploy the project are as follows:
+1. In the Github repository, navigate to the 'Settings' tab.
+2. From the 'Pages' section in the left sidebar, select the branch to deploy from the Master Branch and then save.
+3. Once saved the master branch will be automatically updated.
+
+The live link to the site can be found here - [Pharoah's Tomb Live Site](https://ibrahimabedghane.github.io/Pharoah-s-Tomb/)
