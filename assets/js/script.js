@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         classic: ['rock', 'paper', 'scissors'],
         spock: ['rock', 'paper', 'scissors', 'lizard', 'spock']
     };
+ 
 
     // Sets the game up based on the mode the user selects 
     window.setupGame = function(mode) {
