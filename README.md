@@ -26,3 +26,19 @@ The site has several featurs intended to be intiuitve to the user as they are gr
 ![Game Selection Area](assets/documentation/image(8).png)
 ![Game Rules](assets/documentation/image(9).png)
 
+### Score and Result Display
+- In this section of the game the user can view their result against the computer 
+![Score Display](assets/documentation/image(10).png)
+
+### Features Left To Implement
+- The next version of the game will include a multiplayer game play mode to allow users to experience the game with their friends.
+
+## Testing
+- In order to carry out testing I have ensured that all the links works and the correct file paths are connected accordingly.
+- I have ensured that each button and feature on the site works as intended and is intuitive. To aid in this testing I have deployed the game on various sized screens and devices in order to test functionality across the board.
+
+- HTML: No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/#textarea)
+- CSS: No errors were returned when passing through the official [(Jigsaw) Validator](https://jigsaw.w3.org/css-validator/validator)
+- JavaScript: No errors were found when reviewed by [JSHint](https://jshint.com/)
+
+### Unfixed bugs
