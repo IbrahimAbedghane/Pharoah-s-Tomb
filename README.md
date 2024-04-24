@@ -18,3 +18,11 @@ The site has several featurs intended to be intiuitve to the user as they are gr
 ### Game Selection Area
 - Users can choose between the classic version of the game or the exteded version for enhanced game play for the users. 
 ![Game Selection Area](assets/documentation/image(6).png)
+
+### Game Play Area
+- In this area of the game our users can interact with the game, selecting their choice and playing against the computer.
+- There is a section where our user can enter a username they wish to play with as well as reading the game rules
+![Game Play Area](assets/documentation/image(7).png)
+![Game Selection Area](assets/documentation/image(8).png)
+![Game Rules](assets/documentation/image(9).png)
+
